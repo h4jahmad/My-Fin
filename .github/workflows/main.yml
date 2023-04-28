@@ -22,5 +22,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: my-fin
-          path: app/outputs/apk/debug/my-fin-debug.apk
+          path: /app/build/outputs/apk/debug/my-fin-debug.apk
           
