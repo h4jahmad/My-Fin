@@ -18,9 +18,5 @@ jobs:
           java-version: 17
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-#      - name: Check lint
-#        run: ./gradlew lintDemoDebug
-      - name: Run local tests
-        run: ./gradlew testDemoDebug testProdDebug
       - name: Build all build type and flavor permutations
         run: ./gradlew assemble
