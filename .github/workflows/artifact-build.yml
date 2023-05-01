@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Copy CI gradle.properties
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+      - name: Setup JDK
+        uses: actions/setup-java@v1.4.4
+        with:
+          java-version: 17
+      - name: Gradle Build
+        run: ./gradlew build
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Upload APK
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: my-fin
+          path: app/build/outputs/apk/debug/app-debug.apk
