@@ -1,10 +1,9 @@
-name: FirstOne
+name: Build
 
 on:
   push:
-    branches: [ cicd ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build:
@@ -23,4 +22,3 @@ jobs:
         with:
           name: my-fin
           path: app/build/outputs/apk/debug/app-debug.apk
-          
